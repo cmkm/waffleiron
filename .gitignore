@@ -1,5 +1,6 @@
 *
-!index.html
-!style.css
 !favicon.png
 !.gitignore
+!*.css
+!*.js
+!*.html

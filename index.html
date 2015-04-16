@@ -4,6 +4,8 @@
     <title>waffleiron demo game</title>
     <link rel="stylesheet" type="text/css" href="style.css">
     <link rel="shortcut icon" href="favicon.png">
+    <script src="sweet-alert.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="sweet-alert.css">
 </head>
 
 <body>
@@ -14,23 +16,23 @@
             <h2>category a</h2>
 
             <ul>
-                <li>
+                <li data-qid="a1">
                     <a href="#">200</a>
                 </li>
 
-                <li>
+                <li data-qid="a2">
                     <a href="#">400</a>
                 </li>
 
-                <li>
+                <li data-qid="a3">
                     <a href="#">600</a>
                 </li>
                 
-                <li>
+                <li data-qid="a4">
                     <a href="#">800</a>
                 </li>
 
-                <li>
+                <li data-qid="a5">
                     <a href="#">1000</a>
                 </li>
             </ul>
@@ -41,23 +43,23 @@
             <h2>category b</h2>
 
             <ul>
-                <li>
+                <li data-qid="b1">
                     <a href="#">200</a>
                 </li>
 
-                <li>
+                <li data-qid="b2">
                     <a href="#">400</a>
                 </li>
 
-                <li>
+                <li data-qid="b3">
                     <a href="#">600</a>
                 </li>
                 
-                <li>
+                <li data-qid="b4">
                     <a href="#">800</a>
                 </li>
 
-                <li>
+                <li data-qid="b5">
                     <a href="#">1000</a>
                 </li>
             </ul>
@@ -68,23 +70,23 @@
             <h2>category c</h2>
 
             <ul>
-                <li>
+                <li data-qid="c1">
                     <a href="#">200</a>
                 </li>
 
-                <li>
+                <li data-qid="c2">
                     <a href="#">400</a>
                 </li>
 
-                <li>
+                <li data-qid="c3">
                     <a href="#">600</a>
                 </li>
                 
-                <li>
+                <li data-qid="c4">
                     <a href="#">800</a>
                 </li>
 
-                <li>
+                <li data-qid="c5">
                     <a href="#">1000</a>
                 </li>
             </ul>
@@ -95,23 +97,23 @@
             <h2>category d</h2>
 
             <ul>
-                <li>
+                <li data-qid="d1">
                     <a href="#">200</a>
                 </li>
 
-                <li>
+                <li data-qid="d2">
                     <a href="#">400</a>
                 </li>
 
-                <li>
+                <li data-qid="d3">
                     <a href="#">600</a>
                 </li>
                 
-                <li>
+                <li data-qid="d4">
                     <a href="#">800</a>
                 </li>
 
-                <li>
+                <li data-qid="d5">
                     <a href="#">1000</a>
                 </li>
             </ul>
@@ -122,29 +124,60 @@
             <h2>category e</h2>
 
             <ul>
-                <li>
+                <li data-qid="e1">
                     <a href="#">200</a>
                 </li>
 
-                <li>
+                <li data-qid="e2">
                     <a href="#">400</a>
                 </li>
 
-                <li>
+                <li data-qid="e3">
                     <a href="#">600</a>
                 </li>
                 
-                <li>
+                <li data-qid="e4">
                     <a href="#">800</a>
                 </li>
 
-                <li>
+                <li data-qid="e5">
                     <a href="#">1000</a>
                 </li>
             </ul>
 
         </section>
     </article>
+
+    <script type="text/javascript">
+        var elements = document.querySelectorAll("li");
+        Array.prototype.forEach.call(elements, function(el, i){
+            register(el, i);
+        });
+
+        function register(self, n) {
+            console.log(n);    
+            // var qid = el.getAttribute("data-qid");
+            self.addEventListener("click", launchModal);
+        }
+
+        function launchModal() {
+            var myTitle = "Question 1";
+            swal({
+                    title: myTitle, 
+                    type: "input",
+                    text: "<img src='img/waffle.jpg' width='80%'><br>What is this breakfast food?",
+                    html: true,
+                    showCancelButton: true,
+                    closeOnConfirm: false
+            }, 
+
+            function(inputValue) {
+                swal("Answer: 'Waffle'", "You wrote: " + inputValue, "success");
+                });
+        };
+
+    </script>
+
 </body>
 
 </html>
