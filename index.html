@@ -4,16 +4,16 @@
     <title>waffleiron demo game</title>
     <link rel="stylesheet" type="text/css" href="style.css">
     <link rel="shortcut icon" href="favicon.png">
-    <script src="sweet-alert.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="sweet-alert.css">
+    <script src="flippant.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="flippant.css">
 </head>
 
 <body>
-    <h1>game about waffles</h1>
+    <h1>waffleiron techfest demo</h1>
 
     <article>
         <section data-category="a">
-            <h2>category a</h2>
+            <h2>breakfast</h2>
 
             <ul>
                 <li data-qid="a1">
@@ -40,7 +40,7 @@
         </section>
 
         <section data-category="b">
-            <h2>category b</h2>
+            <h2>waffles</h2>
 
             <ul>
                 <li data-qid="b1">
@@ -67,7 +67,7 @@
         </section>
 
         <section data-category="c">
-            <h2>category c</h2>
+            <h2>pastries</h2>
 
             <ul>
                 <li data-qid="c1">
@@ -94,7 +94,7 @@
         </section>
 
         <section data-category="d">
-            <h2>category d</h2>
+            <h2></h2>
 
             <ul>
                 <li data-qid="d1">
@@ -148,33 +148,63 @@
         </section>
     </article>
 
+    <ul class="noshow questions">
+        <li data-qqid="a1">
+            <img src="img/waffle.jpg">
+            <p>What is this thing?</p>
+        </li>
+
+        <li data-qqid="a2">
+            <a href="#">400</a>
+        </li>
+
+        <li data-qqid="a3">
+            <a href="#">600</a>
+        </li>
+        
+        <li data-qqid="a4">
+            <a href="#">800</a>
+        </li>
+
+        <li data-qqid="a5">
+            <a href="#">1000</a>
+        </li>
+
+    </ul>
+
+    <ul class="noshow answers">
+        <li data-aid="a1">
+            <img src="img/waffle.jpg">
+            <p>What is this thing?</p>
+        </li>
+
+    <ul>    
+
     <script type="text/javascript">
-        var elements = document.querySelectorAll("li");
-        Array.prototype.forEach.call(elements, function(el, i){
-            register(el, i);
+        var squares = document.querySelectorAll("[data-qid]");
+        var questions = document.querySelectorAll("[data-qqid]");
+        var answers_ = document.querySelectorAll("[data-aid]");
+        var answerContainer = document.getElementsByClassName("answers")[0];
+        var answers = answerContainer.getElementsByTagName("li");
+        var flip = flippant.flip;
+
+        document.addEventListener("click", function(e) {
+                if (e.target.parentNode.dataset.hasOwnProperty("qid")) {
+                    e.preventDefault();
+                    var clickedQuestion = e.target.parentNode;
+                    var clickedID = clickedQuestion.dataset.qid;
+                    console.log("Clicked a thing: " + clickedID); 
+                    var question = document.querySelector("[data-qqid=" 
+                        + clickedID + "]");
+                    var answer = 
+                        document.querySelector("[data-aid=" + clickedID 
+                            + "]");
+                    var questionContent = question.innerHTML; 
+                    var answerContent = answer.innerHTML;
+                    // do the thing, finally
+                    flip(clickedQuestion, questionContent, "modal");
+            }
         });
-
-        function register(self, n) {
-            console.log(n);    
-            // var qid = el.getAttribute("data-qid");
-            self.addEventListener("click", launchModal);
-        }
-
-        function launchModal() {
-            var myTitle = "Question 1";
-            swal({
-                    title: myTitle, 
-                    type: "input",
-                    text: "<img src='img/waffle.jpg' width='80%'><br>What is this breakfast food?",
-                    html: true,
-                    showCancelButton: true,
-                    closeOnConfirm: false
-            }, 
-
-            function(inputValue) {
-                swal("Answer: 'Waffle'", "You wrote: " + inputValue, "success");
-                });
-        };
 
     </script>
 
