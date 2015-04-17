@@ -21,7 +21,7 @@ section {
     margin: 0.5em 0.5em 0 0.5em;
     flex: 1 1 auto;
     min-height: 90vh;
-    min-width: 10em;
+    min-width: 8em;
     display: flex;
     flex-direction: column;
 }
@@ -103,6 +103,6 @@ button {
     }
 
     .flippant-back img {
-        max-height: 20em;
-        max-width: 20em;
+        max-height: 15em;
+        max-width: 15em;
     }
