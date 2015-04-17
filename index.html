@@ -2,10 +2,10 @@
 <html>
 <head>
     <title>waffleiron demo game</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
     <link rel="shortcut icon" href="favicon.png">
     <script src="flippant.min.js"></script>
     <link rel="stylesheet" type="text/css" href="flippant.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 
 <body>
@@ -278,8 +278,8 @@
 
     <ul class="noshow answers">
         <li data-aid="a1">
-            <img src="img/waffle.jpg">
-            <p>What is this thing?</p>
+            <h3>Answer</h3>
+            <p>waffle</p>
         </li>
 
         <li data-aid="a2">
@@ -449,6 +449,8 @@
                                 show2.dispatchEvent(
                                     new CustomEvent("close"));
                             });
+                            clickedQuestion.querySelector("a")
+                                .classList.add("done");
                         } else {
                             show.dispatchEvent(new CustomEvent("close"));
                         } });
