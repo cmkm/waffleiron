@@ -413,6 +413,8 @@
             Show Answer
         </button>
     </div>
+
+    <span class="fullscreen">fullscreen</span>
     
 
     <script type="text/javascript">
@@ -434,10 +436,6 @@
                     var buttons = document.querySelector(".buttons")
                         .innerHTML;
 
-                    switchContent = function(el) {
-                        el.innerHTML = answerContent;
-                    }
-                                    
                     var show = 
                         flip(clickedQuestion, questionContent 
                             + buttons, "modal");
